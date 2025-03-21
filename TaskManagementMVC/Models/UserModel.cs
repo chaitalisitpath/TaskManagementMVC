@@ -6,12 +6,12 @@ namespace TaskManagementMVC.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        public string? username { get; set; }
+       
+        public string? Username { get; set; }
 
-        [Required]
-        public string? password { get; set; }
+        
+        public string? Password { get; set; }
 
-        public string? gender { get; set; }
+        public string? Gender { get; set; }
     }
 }

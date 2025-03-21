@@ -1,3 +1,7 @@
+using Microsoft.Data.SqlClient;
+using System.Data;
+using TaskManagementMVC.Repository;
+
 namespace TaskManagementMVC
 {
     public class Program
@@ -8,7 +12,13 @@ namespace TaskManagementMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            // Add services to the container.
+            builder.Services.AddScoped<IDbConnection>(options =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                return new SqlConnection(connectionString);
+            });
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +38,7 @@ namespace TaskManagementMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Register}/{id?}");
 
             app.Run();
         }

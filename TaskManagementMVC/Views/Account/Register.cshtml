@@ -1,6 +1,7 @@
 ﻿@{
 	ViewData["Title"] = "Registration";
 }
+
 <style>
 	body{
 		background-color: #7D7193;
@@ -39,13 +40,13 @@
 		<div class="d-flex justify-content-center align-items-center vh-100">
 			<img class="img-style" src="@Url.Content("~/Images/register.jpg")" alt="Example Image" />
 			<div class="p-5 register-card">
-			@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+			@using (Html.BeginForm("Register", "Account", FormMethod.Post))
 			{	
 				<h1 class="text-center mb-4">Register</h1>
 				<div>
 					<div class="form-group">
 						@Html.Label("Username")
-						@Html.TextBox("txt", "", new { @class = "form-control", placeholder = "Enter Username", style = "width: 300px;" })
+						@Html.TextBox("Username", "", new { @class = "form-control", placeholder = "Enter Username", style = "width: 300px;" })
 					</div>
 					<div class="form-group mt-3">
 						@Html.Label("Password")
@@ -59,8 +60,8 @@
 						@Html.Label("Gender")
 						@Html.DropDownList("gender", new List<SelectListItem>
 					{
-					new SelectListItem {Text = "Male", Value = "1"},
-					new SelectListItem {Text = "Female", Value = "2"}
+					new SelectListItem {Text = "Male", Value = "Male"},
+					new SelectListItem {Text = "Female", Value = "Female"}
 					}, "Select Gender", new { @class = "form-control", style = "width : 300px" })
 
 					</div>

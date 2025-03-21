@@ -4,8 +4,8 @@ namespace TaskManagementMVC.Repository
 {
     public interface IUserRepository
     {
-        Task<long> Register(UserModel user);
+        Task<int> Register(UserModel user);
+        Task<UserModel> Authenticate(string username, string password);
 
-      
     }
 }
