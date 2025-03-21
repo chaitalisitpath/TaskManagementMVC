@@ -1,0 +1,74 @@
+﻿@{
+	ViewData["Title"] = "Registration";
+}
+<style>
+	body{
+		background-color: #7D7193;
+		
+	}
+	.register-card{
+		background-color: white;
+		height:520px;
+		width: 400px;
+		border-radius: 0 20px 20px 0;
+		display: flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		
+	}
+	.img-style{
+		height:520px;
+		width:400px;
+		border-radius: 20px 0 0 20px; 
+		
+	}
+
+	.btn{
+		background-color: #4A4A4A;
+		border-style : none;
+		padding: 6px 20px;
+		font-size: 20px;
+	}
+	.btn:hover{
+			background-color: #6B6B6B;
+	}
+</style>
+<body>
+
+		<div class="d-flex justify-content-center align-items-center vh-100">
+			<img class="img-style" src="@Url.Content("~/Images/register.jpg")" alt="Example Image" />
+			<div class="p-5 register-card">
+			@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+			{	
+				<h1 class="text-center mb-4">Register</h1>
+				<div>
+					<div class="form-group">
+						@Html.Label("Username")
+						@Html.TextBox("txt", "", new { @class = "form-control", placeholder = "Enter Username", style = "width: 300px;" })
+					</div>
+					<div class="form-group mt-3">
+						@Html.Label("Password")
+						@Html.Password("Password", "", new { @class = "form-control", placeholder = "Enter Password" })
+					</div>
+					@* <div class="form-group mt-3"> *@
+					@* 	@Html.Label("Confirm Password") *@
+					@* 	@Html.Password("Confirm Password", "", new { @class = "form-control", placeholder = "Enter Password" }) *@
+					@* </div> *@
+					<div class="form-group mt-3">
+						@Html.Label("Gender")
+						@Html.DropDownList("gender", new List<SelectListItem>
+					{
+					new SelectListItem {Text = "Male", Value = "1"},
+					new SelectListItem {Text = "Female", Value = "2"}
+					}, "Select Gender", new { @class = "form-control", style = "width : 300px" })
+
+					</div>
+
+					<center><button class="btn btn-primary mt-4">Submit</button></center>
+				</div>
+			}
+		</div>
+	</div>
+
+</body>
